@@ -98,10 +98,14 @@ void evolution(vector<individual> &population,vector<individual> &new_population
     int parent2 = (parent1+offset) % 10;
 
     individual new_gen1;
-    individual new_gen2;
+    // individual new_gen2;
 
-    new_gen1.x=population[parent1].x; new_gen1.y=population[parent2].y;
-    new_gen2.x=population[parent2].x; new_gen2.y=population[parent1].y;
+    //new crossover method
+    new_gen1.x=(population[parent1].x+population[parent2].x)/2;
+    new_gen1.y=(population[parent1].y+population[parent2].y)/2;
+    //
+    // new_gen1.x=population[parent1].x; new_gen1.y=population[parent2].y;
+    // new_gen2.x=population[parent2].x; new_gen2.y=population[parent1].y;
 
     int mutate = rand() %  1001;    
 
@@ -125,31 +129,31 @@ void evolution(vector<individual> &population,vector<individual> &new_population
         else if(new_gen1.y>UPPER_Y) new_gen1.y=UPPER_Y;
     }
 
-    mutate = rand() %  1001;    
+    // mutate = rand() %  1001;    
 
-    if(mutate>500){
-        if(mutate>900){
-            new_gen2.x+=0.15;
-            new_gen2.y+=0.15;
-            }
-        else if(mutate>700){
-            new_gen2.x-=0.15;
-            new_gen2.y-=0.15;}    
-        else if(mutate>600){
-            new_gen2.x+=0.15;
-            new_gen2.y-=0.15;}
-        else if(mutate>500){
-            new_gen2.x-=0.15;
-            new_gen2.y+=0.15;}           
-        if(new_gen2.x<LOWER_X) new_gen2.x=LOWER_X;
-        else if(new_gen2.x>UPPER_X) new_gen2.x=UPPER_X;
-        if(new_gen2.y<LOWER_Y) new_gen2.y=LOWER_Y;
-        else if(new_gen2.y>UPPER_Y) new_gen2.y=UPPER_Y;
-    }
+    // if(mutate>500){
+    //     if(mutate>900){
+    //         new_gen2.x+=0.15;
+    //         new_gen2.y+=0.15;
+    //         }
+    //     else if(mutate>700){
+    //         new_gen2.x-=0.15;
+    //         new_gen2.y-=0.15;}    
+    //     else if(mutate>600){
+    //         new_gen2.x+=0.15;
+    //         new_gen2.y-=0.15;}
+    //     else if(mutate>500){
+    //         new_gen2.x-=0.15;
+    //         new_gen2.y+=0.15;}           
+    //     if(new_gen2.x<LOWER_X) new_gen2.x=LOWER_X;
+    //     else if(new_gen2.x>UPPER_X) new_gen2.x=UPPER_X;
+    //     if(new_gen2.y<LOWER_Y) new_gen2.y=LOWER_Y;
+    //     else if(new_gen2.y>UPPER_Y) new_gen2.y=UPPER_Y;
+    // }
     new_gen1.evaluateFitness();
-    new_gen2.evaluateFitness();
+    // new_gen2.evaluateFitness();
     new_population.push_back(new_gen1);
-    new_population.push_back(new_gen2);
+    // new_population.push_back(new_gen2);
 
 }
 
@@ -189,7 +193,7 @@ int main(){
 
 for(int i=0;continue_evolution;i++){
     1<1;
-    for(int j=0;j<(n/2);j++){
+    for(int j=0;j<(n);j++){
 
     evolution(population,new_population);
 
