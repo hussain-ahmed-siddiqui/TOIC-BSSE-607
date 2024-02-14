@@ -208,7 +208,7 @@ for(int i=0;continue_evolution;i++){
         float improvement = (current_avg_fitness / last_avg_fitness); // / last_avg_fitness;
 
     // cout<<"curr avg-fitness: "<<current_avg_fitness<<", last avg-fitness: "<<last_avg_fitness<<"\nimprovement: "<<(improvement-1)*100<<"\n";
-     if(last_avg_fitness<0){//if last_avg is negative
+     if(last_avg_fitness<0 && current_avg_fitness>0){//if last_avg is negative
             last_avg_fitness = current_avg_fitness;
 
         showPopulation(population);
